@@ -21,7 +21,7 @@ We are Time Force and we're building a stopwatch using TDD.
 
 <b>Stretch goals:</b>
 
-- [ ]Adding a new user story.
+- [ ] Adding a new user story.
 
   User Story 2: A chef would like to have a different countdown timer for each pan that happens to be on the cooker or in the oven.
 
