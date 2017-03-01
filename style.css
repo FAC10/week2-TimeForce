@@ -1,0 +1,60 @@
+html{
+  box-sizing: border-box;
+}
+
+*{
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+
+}
+
+.header__heading{
+    font-family: "Lato", sans-serif;
+}
+
+.stopwatch{
+    background:black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 80%;
+    margin: auto;
+    margin-top:3em;
+    border-radius: 2em;
+}
+
+.stopwatch__display{
+  background: white;
+  height: 40%;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+
+}
+
+.stopwatch__unit{display: inline;}
+
+.stopwatch__buttonContainer{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 2em;
+}
+
+.stopwatch__buttons{
+    height: 10%;
+    width: 50%;
+    margin: 1em;
+    font-weight: bold;
+    font-size: 2em;
+}
