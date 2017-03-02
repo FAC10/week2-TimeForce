@@ -63,6 +63,7 @@ function resetTimer(){
     secondsUnit = 00;
      minutesUnit = 00;
      hoursUnit = 00;
+     
 
 }
 window.onload=function(){
