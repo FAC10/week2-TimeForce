@@ -1,7 +1,8 @@
 # week2-TimeForce
+What
+We are Time Force and we're building a stopwatch using TDD-methodology.
 
-We are Time Force and we're building a stopwatch using TDD.
-
+Why
 
 <b>User Story 1</b>: As a ranger wanting to accurately predict how long a coding task takes to complete, I want to time how long I have been working on a task, so that in the future I know how much time to estimate.
 
@@ -28,7 +29,8 @@ We are Time Force and we're building a stopwatch using TDD.
   <br>
 
 <b>Interesting things we've learnt:</b>
-
+If you are accessing an element in the DOM, QUnit will return an error as this element isn't available in the QUnit.html file,
+we therefore had to add the neccessary elements from our index.html to the QUnit.html. Loots of time wasted, but it made us stronger.
 <br>
 
 
