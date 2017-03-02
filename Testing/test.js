@@ -19,6 +19,16 @@ QUnit.test( "When stopTimer is run, 3 seconds after startTimer has started runni
   }, 6000)
 });
 
+QUnit.test( "When resetTimer is run after startTimer had been invoked, miliseconds.innerHTML should equal 00", function( assert ) {
+  var done = assert.async();
+  startTimer();
+  setTimeout(function() {
+    resetTimer();
+    assert.ok(milisecondsUnit===0&&element("miliseconds").innerHTML==="00");
+    done();
+  },3000);
+});
+
 
 
 QUnit.test("if input equals minutes, element(minutes).innerHTML should equal 00", function(assert){
@@ -68,4 +78,22 @@ QUnit.test( "When startTimer is run, secondsUnit should be greater than 0 after 
     assert.ok(secondsUnit>0);
     done();
   },3000);
+});
+
+QUnit.test( "When startTimer is run, secondsUnit should be greater than 0 after 3 seconds", function( assert ) {
+  var done = assert.async();
+  startTimer();
+  setTimeout(function() {
+    assert.ok(secondsUnit>9);
+    done();
+  },10000);
+});
+
+QUnit.test( "When startTimer is run, secondsUnit should be greater than 0 after 3 seconds", function( assert ) {
+  var done = assert.async();
+  startTimer();
+  setTimeout(function() {
+    assert.ok(secondsUnit!==60&&secondsUnit>58||secondsUnit<=1);
+    done();
+  },60000);
 });
