@@ -12,3 +12,7 @@ QUnit.test("if input equals miliseconds, element(miliseconds).innerHTML should e
 assert.equal(element("miliseconds").innerHTML, "00")
 });
 */
+
+QUnit.test("", function(assert){
+assert.equal(milisecondsIncrement(), "00")
+});
