@@ -26,3 +26,23 @@ assert.equal(minutesIncrement(), 1)
 QUnit.test("hoursIncrement should return 1", function(assert){
 assert.equal(hoursIncrement(), 1)
 });
+
+/*
+('after one second passes, seconds should equal 1', function() {
+setTimeout(function() {
+assert.equal(true);
+    // After the assertion has been called,
+    // continue the test
+    start();
+}, 100)
+})
+*/
+
+QUnit.test( "assert.async() test", function( assert ) {
+  var done = assert.async();
+  startTimer();
+  setTimeout(function() {
+    assert.ok(secondsUnit>0);
+    done();
+  },3000);
+});
