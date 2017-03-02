@@ -13,6 +13,16 @@ assert.equal(element("miliseconds").innerHTML, "00")
 });
 */
 
-QUnit.test("", function(assert){
-assert.equal(milisecondsIncrement(), "00")
+QUnit.test("milisecondsIncrement should return 1", function(assert){
+assert.equal(milisecondsIncrement(), 1)
+});
+
+QUnit.test("secondsIncrement should return 1", function(assert){
+assert.equal(secondsIncrement(), 1)
+});
+QUnit.test("minutesIncrement should return 1", function(assert){
+assert.equal(minutesIncrement(), 1)
+});
+QUnit.test("hoursIncrement should return 1", function(assert){
+assert.equal(hoursIncrement(), 1)
 });
