@@ -3,13 +3,14 @@
     var secondsUnit = 00;
     var minutesUnit = 00;
     var hoursUnit = 00;
+    var interval;
+function milisecondsIncrement(){return milisecondsUnit+=1;};
+function secondsIncrement(){return secondsUnit+=1;};
+function minutesIncrement(){return minutesUnit+=1;};
+function hoursIncrement(){return hoursUnit+=1;};
 
-function milisecondsIncrement(){milisecondsUnit++;return;}
-function secondsIncrement(){secondsUnit++;return;}
-function minutesIncrement(){minutesUnit++;return;}
-function hoursIncrement(){hoursUnit++;return;}
-
-  var timer =   setInterval(function() {
+function startTimer(){
+  interval = setInterval(function() {
         //Miliseconds;
         milisecondsIncrement();
         element("miliseconds").innerHTML = "0" + milisecondsUnit;
@@ -46,3 +47,26 @@ function hoursIncrement(){hoursUnit++;return;}
 
 
     }, 10);
+};
+
+function stopTimer(){
+    clearInterval(interval);
+}
+
+function resetTimer(){
+    clearInterval(interval);
+    element("miliseconds").innerHTML = "00";
+    element("seconds").innerHTML = "00";
+    element("minutes").innerHTML = "00";
+    element("hours").innerHTML = "00";
+     milisecondsUnit = 00;
+    secondsUnit = 00;
+     minutesUnit = 00;
+     hoursUnit = 00;
+
+}
+window.onload=function(){
+element("startButton").addEventListener("click", startTimer);
+element("stopButton").addEventListener("click", stopTimer);
+element("resetButton").addEventListener("click", resetTimer);
+}
