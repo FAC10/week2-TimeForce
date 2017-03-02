@@ -19,7 +19,7 @@ html{
 }
 
 .stopwatch{
-    background:black;
+    background:rgb(37, 35, 36);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,6 +39,7 @@ html{
   justify-content: center;
   align-items: center;
   font-size: 3rem;
+  border-radius:1em;
 
 }
 
