@@ -37,7 +37,7 @@ body{
 }
 
 .stopwatch__display{
-  background-color: rgba(201, 201, 201, 0.8);
+  background-color: rgba(201, 150, 100, 1);
   height: 40%;
   width: 60%;
   display: flex;
