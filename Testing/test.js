@@ -11,7 +11,7 @@ function resetScript(){
   element("hours").innerHTML="00";
 };
 function dom() {
-  console.dir(element('seconds'))
+  console.dir(this.onload);
 
 }
 
