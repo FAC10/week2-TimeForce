@@ -1,3 +1,4 @@
+
   function element(id){return document.getElementById(id)};
     var milisecondsUnit = 00;
     var secondsUnit = 00;
@@ -5,6 +6,7 @@
     var hoursUnit = 00;
     var interval;
     var timerSwitch = true;
+    var listenEvent = false;
 function milisecondsIncrement(){return milisecondsUnit+=1;};
 function secondsIncrement(){return secondsUnit+=1;};
 function minutesIncrement(){return minutesUnit+=1;};
@@ -14,10 +16,8 @@ function hoursIncrement(){return hoursUnit+=1;};
 
 
 function startTimer(){
-  // if(timerSwitch){
   clearInterval(interval);
   interval = setInterval(function() {
-        //Miliseconds;
         milisecondsIncrement();
         element("miliseconds").innerHTML = "0" + milisecondsUnit;
         if (milisecondsUnit > 9) {
@@ -53,13 +53,11 @@ function startTimer(){
 
 
     }, 10);
-  // }
-  // timerSwitch=false;
+
 };
 
 function stopTimer(){
     clearInterval(interval);
-    // timerSwitch=true;
 }
 
 function resetTimer(){
@@ -72,12 +70,11 @@ function resetTimer(){
     secondsUnit = 00;
      minutesUnit = 00;
      hoursUnit = 00;
-    //  timerSwitch=true;
-
 
 }
 window.onload=function events(){
 element("startButton").addEventListener("click", startTimer);
 element("stopButton").addEventListener("click", stopTimer);
 element("resetButton").addEventListener("click", resetTimer);
+listenEvent=true;
 }
