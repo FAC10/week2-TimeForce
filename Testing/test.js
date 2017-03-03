@@ -10,12 +10,21 @@ function resetScript(){
   element("seconds").innerHTML="00";
   element("hours").innerHTML="00";
 };
-function dom() {
-  console.dir(this.onload);
 
-}
+var that = this;
+QUnit.module("eventlisteners", function(assert){
+  QUnit.test("When the onload function is run, the variable listenEvent should return true", function(assert){
+    console.log(listenEvent);
+    that.onload();
+    console.log(listenEvent)
+    assert.ok(listenEvent===true);
 
-dom();
+  })
+
+
+})
+
+
 QUnit.module( "Incrementation", function(assert){
 //Tests to see whether the units of time increment when returning the function
   QUnit.test("milisecondsIncrement should return 1", function(assert){
