@@ -1,4 +1,5 @@
-
+//AS WE ARE UPDATING GLOBAL VARIABLES WE HAVE TO MAKE SURE THAT THESE ARE RESET AFTER EACH TEST HAS COMPLETED running
+//THIS ENABLES US TO RUN ATOMIC TESTS, I.E. TESTS THAT ARE TOTALLY INDEPEDENT OF EACHOTHER
 function resetScript(){
   clearInterval(interval);
   milisecondsUnit=00;
@@ -11,6 +12,12 @@ function resetScript(){
   element("hours").innerHTML="00";
 };
 
+
+
+//EVENTLISTENER TESTS
+//THIS TEST BASICALLY TESTS WHETHER THE FUNCTION THAT CONTAINS THE EVENTLISTENERS ACTUALLY RUNS WITH NO ERRORS
+//WE'RE TESTING WHETHER TO SEE IF A GLOBAL VARIABLE HAS BEEN ALTERED AS THIS IS THE LAST LINE INSIDE THE EVENTLISTENER FUNCTION
+//WE TRUST THE JAVASCRIPT ENGINE TO ADD EVENTLISTENERS TO OUR SPECIFIED ELEMENTS AND THEREFORE DON'T NEED TO TEST THAT
 var that = this;
 QUnit.module("eventlisteners", function(assert){
   QUnit.test("When the onload function is run, the variable listenEvent should return true", function(assert){
@@ -24,7 +31,8 @@ QUnit.module("eventlisteners", function(assert){
 
 })
 
-
+//TIME INCREMENTATION TESTS
+//THE TIME INCREMENTATION TESTS SHOULD RETURN 1 AS IT'S INITIALLY SET TO 0
 QUnit.module( "Incrementation", { beforeEach: resetScript }, function(assert){
 //Tests to see whether the units of time increment when returning the function
   QUnit.test("milisecondsIncrement should return 1", function(assert){
@@ -49,10 +57,15 @@ QUnit.module( "Incrementation", { beforeEach: resetScript }, function(assert){
 });
 
 
+//TIMECONVENTION TESTS
+//THIS TEST INITIALLY TOOK OVER A MINUTE TO RUN, BECAUSE I WAS WAITING FOR ONE MINUTE TO passes
+//JWILES THEN POINTED OUT THAT I COULD SECONDS ALSO EQUAL TO 59 AND JUST SET THE TIMEOUT FUNCTION EQUAL TO 1 SECONDS
+//SAVES SO MUCH TIME AND ALLOWS US TO RUN MULTIPLE TESTS
 QUnit.module("breakLimit", function(assert){
-    QUnit.test("minutes cannot equal 60 once minutesUnit is equal to 59 and one full minute passes", function(assert){
+    QUnit.test("minutes should equal 0 once minutesUnit is equal to 59 and secondsUnit is equal to 59 and one second passes", function(assert){
       var done = assert.async();
         minutesUnit=59;
+        secondsUnit=59;
         startTimer();
         setTimeout(function () {
           clearInterval(interval);
@@ -60,11 +73,26 @@ QUnit.module("breakLimit", function(assert){
           console.log(minutesUnit);
           resetScript();
           done();
-        }, 60200);
+        }, 1100);
 
-    })
+    });
+
+    QUnit.test( "When startTimer is run, secondsUnit should equal 0 after 1 second when it is initially set to 59", function( assert ) {
+      var done = assert.async();
+      secondsUnit=59;
+      startTimer();
+      setTimeout(function() {
+        assert.ok(secondsUnit===0);
+        console.log(secondsUnit);
+        done();
+      },1100);
+
+    });
+
 })
 
+
+//STOPTIMER TESTS
 QUnit.module("stopTimer", { beforeEach: resetScript }, function(assert){
   QUnit.test( "When stopTimer is run, 3 seconds after startTimer has started running. secondsUnit should still equal 3 after another 3 seconds", function( assert ) {
     var done1 = assert.async();
@@ -123,7 +151,7 @@ QUnit.module("stopTimer", { beforeEach: resetScript }, function(assert){
 })
 
 
-
+//RESET TIMER TESTS
 QUnit.module("resetTimer", { beforeEach: resetScript },  function(assert){
   //Test to see whether resetTimer actually returns the innerHTML of the units of time back to "oo"
   QUnit.test( "When resetTimer is run 2 seconds after startTimer had been invoked, miliseconds.innerHTML should equal 00 and milisecondsUnit===0", function( assert ) {
@@ -168,7 +196,7 @@ QUnit.test( "When resetTimer is run 2 seconds after startTimer had been invoked,
 });
 
 
-
+//DOM ELEMENT TESTS
 QUnit.module("DomElements", function(assert){
 
 //Tests to see that once element gets returned, its initia value
@@ -196,7 +224,7 @@ QUnit.module("DomElements", function(assert){
 
 
 
-
+//STARTTIMER FUNCTION TESTS
 QUnit.module("startTimer",{ beforeEach: resetScript }, function(assert){
 
 //Tests to see whether startTimer actually increments the second unit icremements
@@ -231,16 +259,6 @@ QUnit.module("startTimer",{ beforeEach: resetScript }, function(assert){
 
   });
 
-  QUnit.test( "When startTimer is run, secondsUnit should equal 0 after 60 seconds", function( assert ) {
-    var done = assert.async();
-    startTimer();
-    setTimeout(function() {
-      assert.ok(secondsUnit===0);
-      console.log(secondsUnit);
-      done();
-    },60200);
-
-  });
 
 
 })
